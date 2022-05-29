@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row py-4">
+    <div class="col-12">
+      <h2>Add New Product</h2>
+      <hr>
+      <br>
+    </div>
+    <div class="col-12 mx-md-auto">
+      <form method="POST" action="/products/new" enctype="multipart/form-data" class="row">
+        <div class="form-group col-6">
+          <label>Name:</label>
+          <input required type="text" name="name" class="form-control">
+        </div>
+        <div class="form-group col-6">
+          <label>Select Category:</label> <br>
+          <select class="form-control" name="category" required>
+            <option value=""></option>
+            {{#each categories}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group col-12">
+          <label>Description:</label>
+          <textarea required name="description" class="form-control"></textarea>
+        </div>
+        <div class="form-group col-4">
+          <label>Regular Price: </label>
+          <input required type="number" name="regular_price" class="form-control">
+        </div>
+        <div class="form-group col-4">
+          <label>Starting Price Bid: </label>
+          <input required type="number" name="starting_price" class="form-control">
+        </div>
+        <div class="form-group col-3">
+          <label>Bidding End Date/Time: </label>
+          <input type="datetime-local" name="bid_end_date_time" class="form-control" required>
+        </div>      
+        <div class="form-group col-6">
+          <label>Product Image:</label>
+          <input type="file" name="image" class="form-control" accept=".jpg, .png, .jpeg, .gif">
+          <span>Accepts only PNG, JPG, JPEG, GIF image formats.</span>
+        </div>
+        <div class="form-group col-4 offset-4 d-flex justify-content-center py-2">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

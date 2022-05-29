@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="stylesheet" type="text/css" href="/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <style>
+      .main-dashboard > .container-fluid {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><i class="fa fa-opencart" aria-hidden="true"></i> {{ appname }} </a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true"></i> Admin <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <div class="sidebar-sticky bg-dark d-lg-none w-100">
+            <ul class="nav flex-column">
+              <li class="nav-item"><a class="nav-link active" href="/">
+              <i class="fa fa-home" aria-hidden="true"></i> <span>Dashboard</span></a>
+              </li>
+              <li class="nav-item"><a href="/categories" class="nav-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i> <span>Categories</span></a>
+              </li>
+              <li class="nav-item"><a href="/products" class="nav-link"><i class="fa fa-cart-plus" aria-hidden="true"></i> <span>Products</span></a>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="/bids">
+              <i class="fa fa-first-order" aria-hidden="true"></i> <span> 
+              Bids</span></a></li>
+              <li class="nav-item"><a href="/customers" class="nav-link"><i class="fa fa-users" aria-hidden="true"></i> <span>Customers</span></a>
+              </li>
+              <li class="nav-item"><a href="/users" class="nav-link"><i class="fa fa-user" aria-hidden="true"></i> <span>Users</span></a>
+              </li>
+              <li class="nav-item"><a href="/logout" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Logout</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid main-content">
+      <div class="row clearfix">
+        <div class="sidebar-sticky bg-dark d-none d-lg-block col-lg-2 col-md-3 col-sm-12 mx-0 px-0 ">
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link active" href="/">
+            <i class="fa fa-home" aria-hidden="true"></i> <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item"><a href="/categories" class="nav-link"><i class="fa fa-shopping-basket" aria-hidden="true"></i> <span>Categories</span></a>
+            </li>
+            <li class="nav-item"><a href="/products" class="nav-link"><i class="fa fa-cart-plus" aria-hidden="true"></i> <span>Products</span></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="/bids">
+            <i class="fa fa-first-order" aria-hidden="true"></i> <span> 
+            Bids</span></a></li>
+            <li class="nav-item"><a href="/customers" class="nav-link"><i class="fa fa-users" aria-hidden="true"></i> <span>Customers</span></a>
+            </li>
+            <li class="nav-item"><a href="/users" class="nav-link"><i class="fa fa-user" aria-hidden="true"></i> <span>Users</span></a>
+            </li>
+            <li class="nav-item"><a href="/logout" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> <span>Logout</span></a>
+            </li>
+          </ul>
+        </div>
+      
+        <div class="col-lg-10 col-md-12 col-sm-12 bg-light main-dashboard">
+          <div class="container-fluid">
+            {{{body}}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src="/lib/js/jquery.min.js"></script>
+    <!-- bootstrap.bundle.min.js includes both bootstrap.js and popper.js -->
+    <script type="text/javascript" src="/lib/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+      $(".alert").alert();
+    </script>
+  </body>
+</html>

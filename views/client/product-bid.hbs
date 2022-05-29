@@ -1,0 +1,93 @@
+<div class="row py-4">
+  <div class="col-lg-3">
+    <div class="list-group">
+      <h4 class="list-group-item list-group-item-action active font-weight-bold mb-4 py-4">Categories</h4>
+      <a href="/bid" class="list-group-item list-group-item-action text-primary py-2" style="border: none; background: transparent"><strong>All Categories</strong></a>
+      {{#each categories}}
+        <a href="/bid?category={{this.name}}" class="list-group-item list-group-item-action text-primary py-2" style="border: none; background: transparent"><strong>{{this.name}}</strong></a>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="row">
+
+      <div class="col-12">
+        <div class="jumbotron py-4">
+          <h4>Viewing Listing: <span class="text-primary">{{product.name}}</span></h4>
+        </div>
+      </div>
+
+      <div class="col-12">
+        {{#if error_msg}}
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{error_msg}}</strong> 
+          </div>
+          <script>
+            $(".alert").alert();
+          </script>
+        {{/if}}
+        {{#if success_msg}}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{success_msg}}</strong> 
+          </div>
+          <script>
+            $(".alert").alert();
+          </script>
+        {{/if}}
+      </div>
+
+      <div class="col-md-4">
+        <div class="card bg-light">
+          <img class="card-img-top" src="{{product.image}}" alt="" height="200px">
+          <div class="card-body">
+            <h5 class="card-text text-danger">Highest Bid: {{highest_bid}}</h5>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-8">
+        <div class="card bg-light">
+          <div class="card-header">
+            <h5>Product Details</h5>
+          </div>
+          <div class="card-body text-dark">
+            <h5 class="card-text m-0 p-0 mb-2">Name: <strong>{{product.name}}</strong></h5>
+            <p class="card-text m-0 p-0 mb-2">Category: <strong>{{product.category}}</strong></p>
+            <p class="card-text m-0 p-0 mb-2">Bid Starting Price: <strong>&#8358; {{product.starting_price}}</strong></p>
+            <p class="card-text m-0 p-0 mb-2">Description: <strong>{{product.description}}</strong></p>
+            <p class="card-text m-0 p-0 mb-2">Bid Ending Time: <strong>{{product.end_time}}</strong></p>
+          </div>
+          <div class="card-footer">
+            {{#if product.bid_closed}}
+              <p class="text-danger font-weight-bold text-center">This bid has been closed</p>
+            {{else}}
+            <form action="/bid/place-bid" method="post" class="form-inline">
+              <input name="product" value="{{product._id}}" type="hidden">
+              <input name="product_name" value="{{product.name}}" type="hidden">
+              <input name="product_serial_number" value="{{product.serial_number}}" type="hidden">
+                <div class="form-group">
+                  <label for="bid-input">Place Bid</label>
+                  
+                  {{#if highest_bid}}
+                  <input type="number" name="bid_price" id="bid-input" class="form-control mx-2" min={{highest_bid}}>
+                  {{else}}
+                  <input type="number" name="bid_price" id="bid-input" class="form-control mx-2" min={{product.starting_price}}>
+                  {{/if}}
+                  <button type="submit" class="btn btn-primary">Place Bid</button>
+                </div>
+            </form>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

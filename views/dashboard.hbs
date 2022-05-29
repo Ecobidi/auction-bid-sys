@@ -1,0 +1,105 @@
+<div class="row mb-3 bg-light">
+  <div class="col-lg-3 col-md-6 col-sm-6 mb-2">
+    <a href="/bids" class="text-white top-detail bg-info">
+      <div class="display-image"><i class="b-icon b-icon-1 fa fa-first-order" aria-hidden="true"></i> </div>
+      <div>
+        <h6>Bids</h6>
+        <p class="total-count-label">{{ bids_count }}</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6 mb-2">
+    <a href="/categories" class="text-white top-detail bg-primary">
+      <div class="display-image"><i class="b-icon b-icon-2 fa fa-shopping-basket" aria-hidden="true"></i> </div>
+      <div>
+        <h6>Categories</h6>
+        <p class="total-count-label">{{ categories_count }}</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6 mb-2">
+    <a href="/products" class="text-white top-detail bg-success">
+      <div class="display-image"><i class="b-icon b-icon-3 fa fa-cart-plus" aria-hidden="true"></i> </div>
+      <div>
+        <h6>Products</h6>
+        <p class="total-count-label">{{ products_count }}</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6 mb-2">
+    <a href="/customers" class="text-white top-detail bg-danger">
+      <div class="display-image"><i class="b-icon b-icon-4 fa fa-users" aria-hidden="true"></i> </div>
+      <div>
+        <h6>Customers</h6>
+        <p class="total-count-label">{{ customers_count }}</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+</div>
+
+<div class="row pt-4">
+  <div class="col-md-8">
+    <h6 class="bg-info text-center py-2 mb-0 text-center text-white">Recent Bids</h6>
+    <table class="table table-light">
+      {{#if recentBids}}
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Customer</th>
+          <th>Bid</th>
+        </tr>
+      </thead>        
+      <tbody>
+        {{#each recentBids}}
+        <tr>
+          <td><small>{{this.product_name}}</small></td>
+          <td><small>{{this.customer_name}}</small></td>
+          <td><small>{{this.bid_price}}</small></td>
+        </tr>
+        {{/each}}
+      </tbody>
+      {{else}}
+      <div class="jumbotron bg-default text-center py-4">
+        <h6 class="lead mb-4 text-dark font-weight-bold">No Recent Bids</h6>
+      </div>
+      {{/if}}
+    </table>
+  </div>
+
+  <div class="col-md-4">
+    <h6 class="bg-info text-center text-white py-2 mb-0">Newly Added Products</h6>
+    {{#if recentProducts}}
+    {{#each recentProducts}}
+    <div class="product-list-item py-2">
+      <div class="product-image mr-2">
+        {{#if this.image}}
+        <img class="img-fluid" src="{{this.image}}" alt="picture">
+        {{/if}}
+      </div>
+      <div class="flex w-100">  
+        <div>
+          <strong class="text-primary">{{this.name}}</strong> <br>
+        </div>
+        <div class="mt-1 d-flex justify-content-between">
+          <div>
+            <div>Regular Price</div>
+            <strong class="badge badge-pill badge-info p-2 text-light">&#8358; {{this.regular_price}}</strong>
+          </div>
+          <div>
+            <div>Starting Price</div>
+            <strong class="badge badge-pill badge-danger p-2 text-light">&#8358; {{this.starting_price}}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="jumbotron bg-default text-center py-4">
+      <h6 class="lead mb-4 text-dark font-weight-bold">No Products</h6>
+      <a href="/products/new" class="btn btn-outline-dark">Add Product</a>
+    </div>
+    {{/if}}
+  </div>
+</div>

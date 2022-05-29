@@ -1,0 +1,47 @@
+<div class="row py-4">
+  <div class="col-lg-3">
+    <div class="list-group">
+      <h4 class="list-group-item list-group-item-action active font-weight-bold mb-4 py-4">Categories</h4>
+      <a href="/bid" class="list-group-item list-group-item-action text-primary py-2" style="border: none; background: transparent"><strong>All Categories</strong></a>
+      {{#each categories}}
+        <a href="/bid?category={{this.name}}" class="list-group-item list-group-item-action text-primary py-2" style="border: none; background: transparent"><strong>{{this.name}}</strong></a>
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="row">
+      <div class="col-12">
+        <div class="jumbotron py-4">
+          <h4>{{products.length}} Product(s) Found</h4>
+        </div>
+      </div>
+      {{#each products}}
+        <div class="col-md-4 col-sm-12 mb-4">
+          <div class="shop-product-list-item p-2 d-block">
+            <div class="shop-product-list-item-image">
+              <img src="{{this.image}}" alt="{{this.name}}">
+            </div>
+            <div class="shop-product-list-item-details">
+              <p class="shop-product-list-item-name">{{this.name}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span>Regular Price</span>
+                  <p class="shop-product-list-item-price">&#8358; {{this.regular_price}}</p>
+                </div>
+                <div>
+                  <span>Starting Price</span>
+                  <p class="shop-product-list-item-price text-primary">&#8358; {{this.starting_price}}</p>
+                </div>
+              </div>
+              <div class="mt-2">
+                <a href="/bid/view-product/{{this.serial_number}}" class="btn-block btn btn-primary">Join Bid</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+
+    </div>
+  </div>
+</div>

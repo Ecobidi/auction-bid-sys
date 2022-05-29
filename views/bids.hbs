@@ -1,0 +1,38 @@
+  <div class="col-12 py-2">
+    <div class="d-flex justify-content-between">
+      <h2>Bids</h2>
+    </div>
+  </div>
+
+  <div class="col-12 py-2">
+    <form class="form-inline" method="POST" action="/bids">
+      <div class="form-group py-2">
+        <input class="form-control" name="search">
+        <button type="submit" class="btn btn-sm btn-primary">Search</button>
+      </div>
+    </form>
+    <h4 class="mb-0 bg-info py-2 text-white text-center mt-4">List of Bids</h4>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Product</th>
+          <th>Customer</th>
+          <th class="text-right">Bid (&#8358;)</th>
+          <th>Time of Bid</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each bids}}
+        <tr>
+          <td>{{this.serial_number}}</td>
+          <td>{{this.product_name}}</td>
+          <td>{{this.customer_name}}</td>
+          <td class="text-right">&#8358; {{this.bid_price}}</td>
+          <td><small>{{this.bid_time}}</small></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

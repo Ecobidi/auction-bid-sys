@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row py-4">
+    <div class="col-12">
+      <h2>Edit Product</h2>
+      <hr>
+      <br>
+    </div>
+    <div class="col-12 mx-md-auto">
+      <form method="POST" action="/products/update/{{product.serial_number}}" enctype="multipart/form-data" class="row">
+        <div class="form-group col-6">
+          <label>Name:</label>
+          <input required type="text" name="name" class="form-control" value="{{product.name}}">
+        </div>
+        <div class="form-group col-6">
+          <label>Select Category: <strong class="text-info">({{product.category}})</strong></label> <br>
+          <select class="form-control" name="category" required>
+            <option value=""></option>
+            {{#each categories}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group col-12">
+          <label>Description:</label>
+          <textarea required name="description" class="form-control">{{product.description}}</textarea>
+        </div>
+        <div class="form-group col-4">
+          <label>Regular Price: </label>
+          <input required type="number" name="regular_price" class="form-control" value="{{product.regular_price}}">
+        </div>
+        <div class="form-group col-4">
+          <label>Starting Price Bid: </label>
+          <input required type="number" name="starting_price" class="form-control" value="{{product.starting_price}}">
+        </div>
+        <div class="form-group col-3">
+          <label>Bidding End Date/Time: </label>
+          <input type="datetime-local" name="bid_end_date_time" class="form-control" required value="{{product.bid_end_date_time}}">
+        </div>      
+        <div class="form-group col-6">
+          <label>Product Image:</label>
+          <input type="file" name="image" class="form-control" accept=".jpg, .png, .jpeg, .gif">
+          <span>Accepts only PNG, JPG, JPEG, GIF image formats.</span>
+        </div>
+        {{#if product.image}}
+        <div class="form-group col-4">
+          <label class="font-weight-bold">Existing Product Image</label>
+          <div>
+            <img src="{{product.image}}" style="width: 140px; height: 160px" alt=""></td>
+
+          </div>
+        </div>
+          {{/if}}
+        <div class="form-group col-4 offset-4 d-flex justify-content-center py-2">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
